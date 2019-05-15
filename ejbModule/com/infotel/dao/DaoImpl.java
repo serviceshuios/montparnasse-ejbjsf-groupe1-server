@@ -117,6 +117,8 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 		Query q = null;
 		try {
 			q = em.createQuery("update Lotissement l set l.personne = ?1 where p = ?2");
+			q.setParameter("l", l);
+			q.setParameter("p", p);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -127,7 +129,9 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 	public void seMarier(Personne p1, Personne p2) {
 		Query q = null;
 		try {
-			q = em.createQuery("update Personne p1 set personne = ?1 where p2 = ?2");
+			q = em.createQuery("update Personne p1 set p1.personne = ?1 where p2 = ?2");
+			q.setParameter("p1", p1);
+			q.setParameter("p2", p2);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
