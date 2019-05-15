@@ -51,8 +51,7 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 	public long supprimerPersonne(long idPersonne) {
 		Query q = null;
 		try {
-			q = em.createQuery("DELETE FROM Personne p where p.idPersonne = ?1");
-			q.setParameter(1, getPersonneSuppr(idPersonne));
+			q = em.createQuery("DELETE FROM Personne p where p.idPersonne = :id").setParameter("id", idPersonne);
 			idPersonne = q.executeUpdate();
 		
 		} catch (Exception e) {
