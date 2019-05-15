@@ -13,6 +13,10 @@ import javax.persistence.OneToOne;
 @Entity
 public class Personne implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idPersonne;
@@ -20,7 +24,7 @@ public class Personne implements Serializable{
 	private String prenom;
 	private int age;
 	@OneToOne
-	private Personne personne;
+	private Personne pers;
 	@OneToMany(mappedBy = "personne")
 	private List<Lotissement> lotissements;
 	
@@ -31,12 +35,7 @@ public class Personne implements Serializable{
 	public void setLotissements(List<Lotissement> lotissements) {
 		this.lotissements = lotissements;
 	}
-	public Personne getPersonne() {
-		return personne;
-	}
-	public void setPersonne(Personne personne) {
-		this.personne = personne;
-	}
+	
 	public long getIdPersonne() {
 		return idPersonne;
 	}
@@ -61,10 +60,16 @@ public class Personne implements Serializable{
 	public void setAge(int age) {
 		this.age = age;
 	}
+	public Personne getPers() {
+		return pers;
+	}
+	public void setPers(Personne pers) {
+		this.pers = pers;
+	}
 	@Override
 	public String toString() {
-		return "Personne [idPersonne=" + idPersonne + ", nom=" + nom + ", prenom=" + prenom + ", age=" + age
-				+ ", personne=" + personne + "]";
+		return "Personne [idPersonne=" + idPersonne + ", nom=" + nom + ", prenom=" + prenom + ", age=" + age + ", pers="
+				+ pers + ", lotissements=" + lotissements + "]";
 	}
 	
 	
