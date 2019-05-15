@@ -24,6 +24,9 @@ public class Personne implements Serializable{
 	private String nom;
 	private String prenom;
 	private int age;
+	
+//	private Personne p1 = new Personne();
+	
 	@OneToOne
 	private Personne personne;
 	@OneToMany(mappedBy = "personne")

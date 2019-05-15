@@ -37,8 +37,8 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 
 	@Override
 	public Personne getPersonne(long idPersonne) {
-		Personne p = em.find(Personne.class, idPersonne);
-		return p;
+		return em.find(Personne.class, idPersonne);
+		
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 
 	@Override
 	public void supprimerPersonne(Personne p) {
-		em.remove(p);
+	em.remove(p);
 	}
 
 	@Override
