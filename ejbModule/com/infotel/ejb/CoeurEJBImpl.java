@@ -10,7 +10,7 @@ public class CoeurEJBImpl implements ICoeurLocal, ICoeurRemote {
 	@Override
 	public void ajouterPersonne(Personne p) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
@@ -26,21 +26,27 @@ public class CoeurEJBImpl implements ICoeurLocal, ICoeurRemote {
 	}
 
 	@Override
-	public void supprimerPersonne(long idPersonne) {
+	public Personne getPersonneSuppr(long idPersonne) {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override
-	public void modifierPersonne(long idPersonne) {
+	public void supprimerPersonne(Personne p) {
 		// TODO Auto-generated method stub
+		
+	}
 
+	@Override
+	public void modifierPersonne(Personne p) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void ajouterLotissement(Lotissement l) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
@@ -56,27 +62,35 @@ public class CoeurEJBImpl implements ICoeurLocal, ICoeurRemote {
 	}
 
 	@Override
-	public void supprimerLotissement(long idLot) {
+	public Lotissement getLotissementSuppr(long idLot) {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
 	@Override
-	public void modifierLotissement(long idLot) {
+	public void supprimerLotissement(Lotissement l) {
 		// TODO Auto-generated method stub
+		
+	}
 
+	@Override
+	public void modifierLotissement(Lotissement l) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void acheterLotissement(Personne p, Lotissement l) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void seMarier(Personne p1, Personne p2) {
 		// TODO Auto-generated method stub
-
+		
 	}
+
+	
 
 }
