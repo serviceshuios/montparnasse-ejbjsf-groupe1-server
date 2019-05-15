@@ -13,15 +13,13 @@ public interface ICoeurLocal {
 	public void ajouterPersonne(Personne p);
 	public List<Personne> listerPersonnes();
 	public Personne getPersonne(long idPersonne);
-	public Personne getPersonneSuppr(long idPersonne);
 	public long supprimerPersonne(long idPersonne);
 	public void modifierPersonne(Personne p);
 	
 	public void ajouterLotissement(Lotissement l);
 	public List<Lotissement> listerLotissements();
 	public Lotissement getLotissement(long idLot);
-	public Lotissement getLotissementSuppr(long idLot);
-	public void supprimerLotissement(Lotissement l);
+	public long supprimerLotissement(long idLot);
 	public void modifierLotissement(Lotissement l);
 	
 	public void acheterLotissement(Personne p, Lotissement l);

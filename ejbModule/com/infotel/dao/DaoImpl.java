@@ -41,11 +41,7 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 		
 	}
 
-	@Override
-	public Personne getPersonneSuppr(long idPersonne) {
-		Personne p = em.getReference(Personne.class, idPersonne);
-		return p;
-	}
+
 
 	@Override
 	public long supprimerPersonne(long idPersonne) {
@@ -91,15 +87,19 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 		return l;
 	}
 
-	@Override
-	public Lotissement getLotissementSuppr(long idLot) {
-		Lotissement l = em.getReference(Lotissement.class, idLot);
-		return l;
-	}
 
 	@Override
-	public void supprimerLotissement(Lotissement l) {
-		em.remove(l);
+	public long supprimerLotissement(long idLot) {
+		Query q = null;
+		try {
+			q = em.createQuery("DELETE FROM Lotissement l where l.idLot = :id").setParameter("id", idLot);
+			idLot = q.executeUpdate();
+		
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}	
+		return idLot;
 	}
 
 	@Override

@@ -53,11 +53,7 @@ public class CoeurEJBImpl implements ICoeurLocal, ICoeurRemote {
 		return daoR.getPersonne(idPersonne);
 	}
 
-	@Override
-	public Personne getPersonneSuppr(long idPersonne) {
-		// TODO Auto-generated method stub
-		return daoR.getPersonneSuppr(idPersonne);
-	}
+
 
 	@Override
 	public long supprimerPersonne(long idPersonne) {
@@ -88,16 +84,12 @@ public class CoeurEJBImpl implements ICoeurLocal, ICoeurRemote {
 		return daoR.getLotissement(idLot);
 	}
 
-	@Override
-	public Lotissement getLotissementSuppr(long idLot) {
-		// TODO Auto-generated method stub
-		return daoR.getLotissementSuppr(idLot);
-	}
+
 
 	@Override
-	public void supprimerLotissement(Lotissement l) {
+	public long supprimerLotissement(long idLot) {
 		// TODO Auto-generated method stub
-		daoR.supprimerLotissement(l);
+		return daoR.supprimerLotissement(idLot);
 	}
 
 	@Override
