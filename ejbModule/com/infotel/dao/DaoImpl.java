@@ -31,7 +31,7 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 		Query q = null;
 		List<Personne> l = new ArrayList<Personne>();
 		q = em.createQuery("SELECT p FROM Personne p");
-		l = q.getResultList();		
+		l = q.getResultList();
 		return l;
 	}
 
@@ -71,7 +71,7 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 		Query q = null;
 		List<Lotissement> l = new ArrayList<Lotissement>();
 		q = em.createQuery("SELECT l FROM Lotissement l");
-		l = q.getResultList();		
+		l = q.getResultList();
 		return l;
 	}
 
@@ -105,19 +105,21 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 	public void acheterLotissement(Personne p, Lotissement l) {
 		Query q = null;
 		try {
-			q = em.createQuery("update Lotissement l set l.personne = ?1 where l = ?2");
-			
-			
+			q = em.createQuery("update Lotissement l set l.personne = ?1 where p = ?2");
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
 
 	}
 
 	@Override
 	public void seMarier(Personne p1, Personne p2) {
-		// TODO Auto-generated method stub
+		Query q = null;
+		try {
+			q = em.createQuery("update Personne p1 set personne = ?1 where p2 = ?2");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 
 	}
 
