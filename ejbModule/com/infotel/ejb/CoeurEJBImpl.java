@@ -60,9 +60,9 @@ public class CoeurEJBImpl implements ICoeurLocal, ICoeurRemote {
 	}
 
 	@Override
-	public void supprimerPersonne(Personne p) {
+	public long supprimerPersonne(long idPersonne) {
 		// TODO Auto-generated method stub
-		daoR.supprimerPersonne(p);
+		return daoR.supprimerPersonne(idPersonne);
 	}
 
 	@Override

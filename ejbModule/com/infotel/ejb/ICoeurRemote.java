@@ -14,7 +14,7 @@ public interface ICoeurRemote {
 	public List<Personne> listerPersonnes();
 	public Personne getPersonne(long idPersonne);
 	public Personne getPersonneSuppr(long idPersonne);
-	public void supprimerPersonne(Personne p);
+	public long supprimerPersonne(long idPersonne);
 	public void modifierPersonne(Personne p);
 	
 	public void ajouterLotissement(Lotissement l);

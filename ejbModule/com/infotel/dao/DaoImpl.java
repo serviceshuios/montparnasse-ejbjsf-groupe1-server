@@ -48,8 +48,18 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 	}
 
 	@Override
-	public void supprimerPersonne(Personne p) {
-	em.remove(p);
+	public long supprimerPersonne(long idPersonne) {
+		Query q = null;
+		try {
+			q = em.createQuery("DELETE FROM Personne where idPersonne=?");
+			q.setParameter(1, idPersonne);
+			idPersonne = q.executeUpdate();
+		
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("ERREUR");
+		}	
+		return idPersonne;
 	}
 
 	@Override
