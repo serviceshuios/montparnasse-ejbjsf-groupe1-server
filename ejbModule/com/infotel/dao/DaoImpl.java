@@ -1,112 +1,124 @@
 package com.infotel.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import com.infotel.metier.Lotissement;
 import com.infotel.metier.Personne;
 
 @Stateless
 public class DaoImpl implements IdaoLocal, IdaoRemote {
-	
+
 	@PersistenceContext(unitName = "BP_UNIT")
 	private EntityManager em;
-
-	@Override
-	public void ajouterPersonne(Personne p) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	/*
 	 * ==========METHODES PERSONNE==========
 	 */
-	
+
+	@Override
+	public void ajouterPersonne(Personne p) {
+		em.persist(p);
+	}
+
 	@Override
 	public List<Personne> listerPersonnes() {
-		// TODO Auto-generated method stub
-		return null;
+		Query q = null;
+		List<Personne> l = new ArrayList<Personne>();
+		q = em.createQuery("SELECT p FROM Personne p");
+		l = q.getResultList();		
+		return l;
 	}
 
 	@Override
 	public Personne getPersonne(long idPersonne) {
-		// TODO Auto-generated method stub
-		return null;
+		Personne p = em.find(Personne.class, idPersonne);
+		return p;
 	}
 
 	@Override
 	public Personne getPersonneSuppr(long idPersonne) {
-		// TODO Auto-generated method stub
-		return null;
+		Personne p = em.getReference(Personne.class, idPersonne);
+		return p;
 	}
 
 	@Override
 	public void supprimerPersonne(Personne p) {
-		// TODO Auto-generated method stub
-		
+		em.remove(p);
 	}
 
 	@Override
 	public void modifierPersonne(Personne p) {
-		// TODO Auto-generated method stub
-		
+		em.merge(p);
 	}
-	
+
 	/*
 	 * ==========METHODE LOTTISSEMENT==========
 	 */
 
 	@Override
 	public void ajouterLotissement(Lotissement l) {
-		// TODO Auto-generated method stub
-		
+		em.persist(l);
 	}
 
 	@Override
 	public List<Lotissement> listerLotissements() {
-		// TODO Auto-generated method stub
-		return null;
+		Query q = null;
+		List<Lotissement> l = new ArrayList<Lotissement>();
+		q = em.createQuery("SELECT l FROM Lotissement l");
+		l = q.getResultList();		
+		return l;
 	}
 
 	@Override
 	public Lotissement getLotissement(long idLot) {
-		// TODO Auto-generated method stub
-		return null;
+		Lotissement l = em.find(Lotissement.class, idLot);
+		return l;
 	}
 
 	@Override
 	public Lotissement getLotissementSuppr(long idLot) {
-		// TODO Auto-generated method stub
-		return null;
+		Lotissement l = em.getReference(Lotissement.class, idLot);
+		return l;
 	}
 
 	@Override
 	public void supprimerLotissement(Lotissement l) {
-		// TODO Auto-generated method stub
-		
+		em.remove(l);
 	}
 
 	@Override
 	public void modifierLotissement(Lotissement l) {
-		// TODO Auto-generated method stub
-		
+		em.merge(l);
 	}
+
+	/*
+	 * METHODE CUSTOM
+	 */
 
 	@Override
 	public void acheterLotissement(Personne p, Lotissement l) {
-		// TODO Auto-generated method stub
+		Query q = null;
+		try {
+			q = em.createQuery("update Lotissement l set l.personne = ?1 where l = ?2");
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
+
 	}
 
 	@Override
 	public void seMarier(Personne p1, Personne p2) {
 		// TODO Auto-generated method stub
-		
-	}
 
-	
+	}
 
 }
