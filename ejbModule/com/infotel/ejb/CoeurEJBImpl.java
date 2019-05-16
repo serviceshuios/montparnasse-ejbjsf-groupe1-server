@@ -99,15 +99,15 @@ public class CoeurEJBImpl implements ICoeurLocal, ICoeurRemote {
 	}
 
 	@Override
-	public void acheterLotissement(Personne p, Lotissement l) {
+	public void acheterLotissement(long idPersonne, long idLotissement) {
 		// TODO Auto-generated method stub
-		daoR.acheterLotissement(p, l);
+		daoR.acheterLotissement(idPersonne, idLotissement);
 	}
 
 	@Override
-	public void seMarier(Personne p1, Personne p2) {
+	public void seMarier(long idPers1, long idPers2) {
 		// TODO Auto-generated method stub
-		daoR.seMarier(p1, p2);
+		daoR.seMarier(idPers1, idPers2);
 	}
 
 	

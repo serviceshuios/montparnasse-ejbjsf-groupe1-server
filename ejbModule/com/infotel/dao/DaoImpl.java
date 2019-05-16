@@ -115,26 +115,32 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 	public void acheterLotissement(Personne p, Lotissement l) {
 		Query q = null;
 		try {
-			q = em.createQuery("UPDATE Lotissement l set l.personne = :lot  WHERE p = :pers");
-			q.setParameter("lot", l);
-			q.setParameter("pers", p);
-			q.executeUpdate();
+			q = em.createQuery("UPDATE Personne set personne.idPersonne = :idPP where idPersonne = :iP")
+					.setParameter("idP",  l.getIdLot()).setParameter("idPP", p.getIdPersonne()).executeUpdate();
+			
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 
 	}
 
 	@Override
-	public void seMarier(Personne p1, Personne p2) {
+	public void seMarier(long idPers1, long idPers2) {
+		Personne p1 = new Personne();
+		p1.setIdPersonne(idPers1);
+		Personne p2 = new Personne();
+		p2.setIdPersonne(idPers2);
 		Query q = null;
 		try {
-			q = em.createQuery("UPDATE Personne p set p.personne = :pers1 WHERE p.idPersonne = :id");
-			q.setParameter("pers1", p1);
-			q.setParameter("id", p2);
-			q.executeUpdate();
+			q = em.createQuery("UPDATE Personne p set p.personne.idPersonne = :id1 WHERE p.idPersonne = :id2");
+			q.setParameter("id1", idPers1);
+			q.setParameter("id2", idPers2);
+			idPers1 = q.executeUpdate();
+			//idPers2 = q.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
 
 	}

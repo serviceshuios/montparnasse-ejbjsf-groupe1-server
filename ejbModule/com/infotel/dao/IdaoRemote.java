@@ -22,6 +22,6 @@ public interface IdaoRemote {
 	public long supprimerLotissement(long idLot);
 	public void modifierLotissement(Lotissement l);
 	
-	public void acheterLotissement(Personne p, Lotissement l);
-	public void seMarier(Personne p1, Personne p2);
+	public void acheterLotissement(long idPersonne, long idLotissement);
+	public void seMarier(long idPers1, long idPers2);
 }
