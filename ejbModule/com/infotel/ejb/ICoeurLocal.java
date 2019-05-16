@@ -22,6 +22,6 @@ public interface ICoeurLocal {
 	public long supprimerLotissement(long idLot);
 	public void modifierLotissement(Lotissement l);
 	
-	public void acheterLotissement(long idPersonne, long idLotissement);
+	public void acheterLotissement(long idPersonne, long idLot);
 	public void seMarier(long idPers1, long idPers2);
 }

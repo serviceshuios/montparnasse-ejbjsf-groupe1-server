@@ -112,12 +112,17 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 	 */
 
 	@Override
-	public void acheterLotissement(Personne p, Lotissement l) {
+	public void acheterLotissement(long idPersonne, long idLot) {
 		Query q = null;
 		try {
-			q = em.createQuery("UPDATE Personne set personne.idPersonne = :idPP where idPersonne = :iP")
-					.setParameter("idP",  l.getIdLot()).setParameter("idPP", p.getIdPersonne()).executeUpdate();
+			Personne p = new Personne();
+			Lotissement l = new Lotissement();
 			
+		q= em.createQuery("UPDATE Personne p set p.personne.idPersonne = :idPP where p.idPersonne = :iP");
+		q.setParameter("iP", l.getIdLot());
+		q.setParameter("idPP", p.getIdPersonne());
+
+		idPersonne = q.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
