@@ -23,5 +23,6 @@ public interface IdaoLocal {
 	public void modifierLotissement(Lotissement l);
 	
 	public void acheterLotissement(long idPersonne, long idLot);
-	public void seMarier(long idPers1, long idPers2);
+	public void seMarier1(long idPers1, long idPers2);
+	public void seMarier2(long idPers1, long idPers2);
 }

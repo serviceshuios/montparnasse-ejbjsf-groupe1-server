@@ -38,10 +38,8 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 	@Override
 	public Personne getPersonne(long idPersonne) {
 		return em.find(Personne.class, idPersonne);
-		
+
 	}
-
-
 
 	@Override
 	public long supprimerPersonne(long idPersonne) {
@@ -49,14 +47,13 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 		try {
 			q = em.createQuery("DELETE FROM Personne p where p.idPersonne = :id").setParameter("id", idPersonne);
 			idPersonne = q.executeUpdate();
-		
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}	
+		}
 		return idPersonne;
 	}
-
 
 	@Override
 	public void modifierPersonne(Personne p) {
@@ -87,18 +84,17 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 		return l;
 	}
 
-
 	@Override
 	public long supprimerLotissement(long idLot) {
 		Query q = null;
 		try {
 			q = em.createQuery("DELETE FROM Lotissement l where l.idLot = :id").setParameter("id", idLot);
 			idLot = q.executeUpdate();
-		
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}	
+		}
 		return idLot;
 	}
 
@@ -115,14 +111,11 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 	public void acheterLotissement(long idPersonne, long idLot) {
 		Query q = null;
 		try {
-			Personne p = new Personne();
-			Lotissement l = new Lotissement();
-			
-		q= em.createQuery("UPDATE Personne p set p.personne.idPersonne = :idPP where p.idPersonne = :iP");
-		q.setParameter("iP", l.getIdLot());
-		q.setParameter("idPP", p.getIdPersonne());
+			q = em.createQuery("UPDATE Lotissement l set l.personne.idPersonne = :idPP where l.idLot = :iP");
+			q.setParameter("iP", idLot);
+			q.setParameter("idPP", idPersonne);
 
-		idPersonne = q.executeUpdate();
+			idLot = q.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -131,23 +124,37 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 	}
 
 	@Override
-	public void seMarier(long idPers1, long idPers2) {
-		Personne p1 = new Personne();
-		p1.setIdPersonne(idPers1);
-		Personne p2 = new Personne();
-		p2.setIdPersonne(idPers2);
-		Query q = null;
+	public void seMarier1(long idPers1, long idPers2) {
+
+		Query q2 = null;
+
 		try {
-			q = em.createQuery("UPDATE Personne p set p.personne.idPersonne = :id1 WHERE p.idPersonne = :id2");
-			q.setParameter("id1", idPers1);
-			q.setParameter("id2", idPers2);
-			idPers1 = q.executeUpdate();
-			//idPers2 = q.executeUpdate();
+			q2 = em.createQuery("UPDATE Personne p set p.personne.idPersonne = :id2 WHERE p.idPersonne = :id1");
+			q2.setParameter("id1", idPers1);
+			q2.setParameter("id2", idPers2);
+			idPers1 = q2.executeUpdate();
+
 		} catch (Exception e) {
 			// TODO: handle exception
-			e.printStackTrace();
 		}
 
+	}
+	
+	@Override
+	public void seMarier2(long idPers1, long idPers2) {
+		
+		Query q2 = null;
+		
+		try {
+			q2 = em.createQuery("UPDATE Personne p set p.personne.idPersonne = :id1 WHERE p.idPersonne = :id2");
+			q2.setParameter("id1", idPers1);
+			q2.setParameter("id2", idPers2);
+			idPers2 = q2.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	}
 
 }

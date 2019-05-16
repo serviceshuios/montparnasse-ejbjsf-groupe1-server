@@ -105,9 +105,14 @@ public class CoeurEJBImpl implements ICoeurLocal, ICoeurRemote {
 	}
 
 	@Override
-	public void seMarier(long idPers1, long idPers2) {
+	public void seMarier1(long idPers1, long idPers2) {
 		// TODO Auto-generated method stub
-		daoR.seMarier(idPers1, idPers2);
+		daoR.seMarier1(idPers1, idPers2);
+	}
+	@Override
+	public void seMarier2(long idPers1, long idPers2) {
+		// TODO Auto-generated method stub
+		daoR.seMarier2(idPers1, idPers2);
 	}
 
 	
