@@ -61,7 +61,7 @@ public class Lotissement implements Serializable{
 	@Override
 	public String toString() {
 		return "Lotissement [idLot=" + idLot + ", numLot=" + numLot + ", adresseLot=" + adresseLot + ", prix=" + prix
-				+ ", personne=" + personne + "]";
+				+ "]";
 	}
 	
 	

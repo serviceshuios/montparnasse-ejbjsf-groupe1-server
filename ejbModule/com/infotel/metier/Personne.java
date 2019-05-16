@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PreRemove;
 
 @Entity
 public class Personne implements Serializable{
@@ -26,7 +27,7 @@ public class Personne implements Serializable{
 	private String prenom;
 	private int age;
 	
-//	private Personne p1 = new Personne();
+	
 	
 	@OneToOne(fetch = FetchType.EAGER)
 	private Personne personne;
@@ -70,10 +71,17 @@ public class Personne implements Serializable{
 	public void setAge(int age) {
 		this.age = age;
 	}
+	
+
+	@PreRemove
+	public void deleteSetNull() {
+		Personne p = new Personne() ;
+			p.setPersonne(null);		
+	}
 	@Override
 	public String toString() {
 		return "Personne [idPersonne=" + idPersonne + ", nom=" + nom + ", prenom=" + prenom + ", age=" + age
-				+ ", personne=" + personne + "]";
+				+ "]";
 	}
 	
 	

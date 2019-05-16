@@ -6,6 +6,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PreRemove;
 import javax.persistence.Query;
 
 import com.infotel.metier.Lotissement;
@@ -156,5 +157,7 @@ public class DaoImpl implements IdaoLocal, IdaoRemote {
 		}
 		
 	}
+	
+	
 
 }
