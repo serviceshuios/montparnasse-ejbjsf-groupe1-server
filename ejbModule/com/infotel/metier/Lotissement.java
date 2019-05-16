@@ -63,6 +63,6 @@ public class Lotissement implements Serializable{
 		return "Lotissement [idLot=" + idLot + ", numLot=" + numLot + ", adresseLot=" + adresseLot + ", prix=" + prix
 				+ "]";
 	}
-	
+
 	
 }
